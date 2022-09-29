@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Card = styled.div`
@@ -22,4 +23,10 @@ export const CryptoTitle = styled.span`
 export const Price = styled.span`
   margin-left: auto;
   font-family: 'bold';
+`
+
+export const InfoLink = styled(Link)`
+  text-decoration: none;
+  cursor: pointer;
+  color: black;
 `

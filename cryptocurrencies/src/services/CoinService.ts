@@ -6,7 +6,7 @@ export default class CoinService {
   private _endpoint: string
   private _targetCoin: string
   private _perPage: number
-  private _priceChangePercentage: number
+  private _priceChangePercentage: string
   private _coins: Coin[]
 
   constructor() {
@@ -18,9 +18,7 @@ export default class CoinService {
     this._endpoint = import.meta.env.VITE_COIN_PRICES_ENDPOINT
     this._targetCoin = import.meta.env.VITE_VS_CURRENCY
     this._perPage = parseInt(import.meta.env.VITE_PER_PAGE)
-    this._priceChangePercentage = parseFloat(
-      import.meta.env.VITE_PRICE_CHANGE_PERCENTAGE
-    )
+    this._priceChangePercentage = import.meta.env.VITE_PRICE_CHANGE_PERCENTAGE
 
     this._coins = []
   }
@@ -40,5 +38,20 @@ export default class CoinService {
     }
 
     return this._coins
+  }
+
+  filterCoins(filter: string) {
+    const sanitizedFilter = filter.trim().toLowerCase()
+
+    if (!sanitizedFilter) {
+      return this._coins
+    }
+
+    return this._coins.filter((c) => {
+      return (
+        c.name.toLowerCase().includes(sanitizedFilter) ||
+        c.symbol.toLowerCase().includes(sanitizedFilter)
+      )
+    })
   }
 }
