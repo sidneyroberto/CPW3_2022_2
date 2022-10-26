@@ -23,7 +23,7 @@ const CoinCard = ({ coin }: Props) => {
   })
 
   return (
-    <InfoLink to='/info'>
+    <InfoLink to='/info' state={{ coin: coin }}>
       <Card>
         <CryptoLogo src={coin.logo} alt={`${coin.name} logo`} />
         <CryptoTitle>{coin.name}</CryptoTitle>
