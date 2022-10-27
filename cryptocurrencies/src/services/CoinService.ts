@@ -4,7 +4,6 @@ import Coin from '../models/Coin'
 export default class CoinService {
   private _http: AxiosInstance
   private _endpoint: string
-  private _targetCoin: string
   private _perPage: number
   private _priceChangePercentage: string
   private _coins: Coin[]
@@ -16,17 +15,16 @@ export default class CoinService {
     })
 
     this._endpoint = import.meta.env.VITE_COIN_PRICES_ENDPOINT
-    this._targetCoin = import.meta.env.VITE_VS_CURRENCY
     this._perPage = parseInt(import.meta.env.VITE_PER_PAGE)
     this._priceChangePercentage = import.meta.env.VITE_PRICE_CHANGE_PERCENTAGE
 
     this._coins = []
   }
 
-  async loadCoins() {
+  async loadCoins(vsCurrency: string) {
     const response = await this._http(this._endpoint, {
       params: {
-        vs_currency: this._targetCoin,
+        vs_currency: vsCurrency,
         per_page: this._perPage,
         price_change_percentage: this._priceChangePercentage,
       },

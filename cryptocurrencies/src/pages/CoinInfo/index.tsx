@@ -1,4 +1,6 @@
+import { useContext } from 'react'
 import { useLocation } from 'react-router-dom'
+import { UserContext } from '../../context/UserContext'
 import Coin from '../../models/Coin'
 import {
   BackButton,
@@ -21,9 +23,11 @@ const CoinInfo = () => {
   const location: Location = useLocation()
   const { coin } = location.state
 
+  const { vsCurrency } = useContext(UserContext)
+
   const moneyFormatter = Intl.NumberFormat('pt-BR', {
     style: 'currency',
-    currency: 'usd',
+    currency: vsCurrency,
   })
 
   return (

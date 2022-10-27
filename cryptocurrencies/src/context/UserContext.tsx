@@ -6,7 +6,7 @@ type UserContextType = {
 }
 
 const initialValue: UserContextType = {
-  vsCurrency: 'brl',
+  vsCurrency: 'jpy',
   setVsCurrency: () => {},
 }
 

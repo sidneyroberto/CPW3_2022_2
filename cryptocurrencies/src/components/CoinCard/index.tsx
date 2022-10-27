@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+import { UserContext } from '../../context/UserContext'
 import Coin from '../../models/Coin'
 import { Card, CryptoLogo, CryptoTitle, InfoLink, Price } from './styles'
 
@@ -17,8 +19,10 @@ const CoinCard = ({ coin }: Props) => {
   const priceStyle =
     coin.priceChange1H >= 0 ? priceIncreasedStyle : priceDecreasedStyle
 
+  const { vsCurrency } = useContext(UserContext)
+
   const formatter = Intl.NumberFormat('pt-BR', {
-    currency: 'usd',
+    currency: vsCurrency,
     style: 'currency',
   })
 
