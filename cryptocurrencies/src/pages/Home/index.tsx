@@ -2,9 +2,8 @@ import { useEffect, useState } from 'react'
 import CoinCard from '../../components/CoinCard'
 import Coin from '../../models/Coin'
 import CoinService from '../../services/CoinService'
-import { Container, FilterInput } from './styles'
-
-//const coinService = new CoinService()
+import { Container, FilterInput, Loading } from './styles'
+import loading from '../../assets/img/loading.gif'
 
 const Home = () => {
   const [coins, setCoins] = useState<Coin[]>([])
@@ -42,7 +41,7 @@ const Home = () => {
         </>
       )}
 
-      {!coinsLoaded && <p>Carregando criptomoedas...</p>}
+      {!coinsLoaded && <Loading src={loading} alt='Carregando criptomoedas' />}
     </Container>
   )
 }
