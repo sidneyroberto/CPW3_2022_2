@@ -22,6 +22,7 @@ export default class CoinService {
   }
 
   async loadCoins(vsCurrency: string) {
+    this._coins = []
     const response = await this._http(this._endpoint, {
       params: {
         vs_currency: vsCurrency,
@@ -30,9 +31,13 @@ export default class CoinService {
       },
     })
 
-    if (response.status == 200) {
-      const { data } = response
-      this._coins = data.map((obj: any) => new Coin(obj))
+    try {
+      if (response.status == 200) {
+        const { data } = response
+        this._coins = data.map((obj: any) => new Coin(obj))
+      }
+    } catch(err) {
+      console.log(err)
     }
 
     return this._coins

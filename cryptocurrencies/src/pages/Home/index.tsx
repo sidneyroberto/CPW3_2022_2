@@ -23,7 +23,7 @@ const Home = () => {
 
   useEffect(() => {
     loadCoins()
-  }, [])
+  }, [vsCurrency])
 
   useEffect(() => {
     const results = coinService.filterCoins(filter)
@@ -41,6 +41,8 @@ const Home = () => {
           />
           {coins.length > 0 &&
             coins.map((c) => <CoinCard coin={c} key={c.id} />)}
+          
+          {coins.length == 0 && <h2>Erro ao acessar os dados das moedas</h2>}
         </>
       )}
 

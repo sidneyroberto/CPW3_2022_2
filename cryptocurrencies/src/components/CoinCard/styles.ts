@@ -9,6 +9,10 @@ export const Card = styled.div`
   align-items: center;
   width: 60%;
   margin: 0 auto 20px auto;
+
+  @media (max-width: 600px) {
+    width: 80%;
+  }
 `
 
 export const CryptoLogo = styled.img`
