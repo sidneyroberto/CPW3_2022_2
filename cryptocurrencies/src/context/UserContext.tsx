@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useState } from 'react'
+import { createContext, ReactNode, useEffect, useState } from 'react'
 
 type UserContextType = {
   vsCurrency: string
@@ -6,7 +6,7 @@ type UserContextType = {
 }
 
 const initialValue: UserContextType = {
-  vsCurrency: 'eur',
+  vsCurrency: localStorage.getItem('vsCurrency') || 'usd',
   setVsCurrency: () => {},
 }
 
@@ -18,6 +18,10 @@ type UserContextProps = {
 
 export const UserContextProvider = ({ children }: UserContextProps) => {
   const [vsCurrency, setVsCurrency] = useState(initialValue.vsCurrency)
+
+  useEffect(() => {
+    localStorage.setItem('vsCurrency', vsCurrency)
+  }, [vsCurrency])
 
   return (
     <UserContext.Provider value={{ vsCurrency, setVsCurrency }}>

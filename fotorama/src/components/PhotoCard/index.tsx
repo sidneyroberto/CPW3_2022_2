@@ -5,6 +5,7 @@ import {
   PhotoCreationDate,
   PhotoDescription,
   PhotoImage,
+  PhotoLink,
 } from './styles'
 
 type Props = {
@@ -13,22 +14,24 @@ type Props = {
 
 const PhotoCard = ({ photo }: Props) => {
   return (
-    <CardContainer>
-      <PhotoImage src={photo.smallUrl} alt={photo.description} />
+    <PhotoLink to='/view' state={{ photo }}>
+      <CardContainer>
+        <PhotoImage src={photo.smallUrl} alt={photo.description} />
 
-      <InfoPanel>
-        {photo.description && (
-          <PhotoDescription>
-            {photo.description.length > 50
-              ? `${photo.description.slice(0, 50)}(...).`
-              : photo.description}
-          </PhotoDescription>
-        )}
-        <PhotoCreationDate>
-          Criada em {photo.creationDate.toLocaleDateString()}
-        </PhotoCreationDate>
-      </InfoPanel>
-    </CardContainer>
+        <InfoPanel>
+          {photo.description && (
+            <PhotoDescription>
+              {photo.description.length > 50
+                ? `${photo.description.slice(0, 50)}(...).`
+                : photo.description}
+            </PhotoDescription>
+          )}
+          <PhotoCreationDate>
+            Criada em {photo.creationDate.toLocaleDateString()}
+          </PhotoCreationDate>
+        </InfoPanel>
+      </CardContainer>
+    </PhotoLink>
   )
 }
 

@@ -20,7 +20,7 @@ export const FilterInput = styled.input.attrs({ type: 'text' })`
   padding: 0 10px;
 
   @media (max-width: 600px) {
-    width: 80%;
+    width: 90%;
     font-size: 14px;
   }
 `

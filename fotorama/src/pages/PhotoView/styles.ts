@@ -1,38 +1,22 @@
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
-export const PhotoLink = styled(Link)`
-  text-decoration: none;
-  padding: 0;
-  margin: 0;
-  width: 22%;
-
-  @media (max-width: 1280px) {
-    width: 30%;
-  }
-
-  @media (max-width: 900px) {
-    width: 45%;
-  }
+export const Container = styled.div`
+  padding: 50px 100px;
 
   @media (max-width: 600px) {
-    width: 90%;
+    padding: 50px 20px;
   }
 `
 
-export const CardContainer = styled.div`
+export const PhotoPanel = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 10px;
 `
 
-export const PhotoImage = styled.img`
+export const Image = styled.img`
   width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
 `
 
 export const InfoPanel = styled.div`
@@ -40,11 +24,10 @@ export const InfoPanel = styled.div`
   flex-direction: column;
   background-color: #2d55ff;
   width: 100%;
+  box-sizing: border-box;
   text-align: center;
-  height: 100px;
   justify-content: center;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  padding: 20px;
 `
 
 export const PhotoDescription = styled.span`
@@ -57,4 +40,24 @@ export const PhotoCreationDate = styled.span`
   font-family: 'regular';
   color: white;
   margin: 10px;
+`
+
+export const BackLinkPanel = styled.div`
+  margin: 30px auto;
+  width: 100px;
+`
+
+export const BackLink = styled(Link)`
+  text-decoration: none;
+`
+
+export const BackButton = styled.button`
+  width: 100%;
+  background-color: #2d55ff;
+  color: white;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-family: 'bold';
+  border: none;
+  cursor: pointer;
 `

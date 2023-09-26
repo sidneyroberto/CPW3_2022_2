@@ -7,7 +7,8 @@ export const Container = styled.div`
   align-items: center;
   
   @media (max-width: 600px) {
-    flex-direction: column;
+    padding: 20px;
+    justify-content: center;
   }
 `
 
@@ -18,7 +19,7 @@ export const AppTitle = styled.h1`
   text-shadow: 2px 2px #333;
 
   @media (max-width: 600px) {
-    text-align: center;
+    display: none;
   }
 `
 
@@ -28,7 +29,7 @@ export const VsCurrencyLabel = styled.span`
   font-family: 'bold';
 
   @media (max-width: 600px) {
-    margin: 10px 0;
+    margin: 0 10px 0 0;
   }
 `
 

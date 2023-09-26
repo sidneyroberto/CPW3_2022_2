@@ -1,4 +1,4 @@
-import { createApi } from 'unsplash-js'
+import { createApi, SearchOrderBy } from 'unsplash-js'
 import { PhotosDTO } from '../data-transports/PhotosDTO'
 import { Photo } from '../models/Photo'
 
@@ -10,7 +10,8 @@ export class PhotoService {
   async findPhotos(
     query: string,
     page: number,
-    perPage: number
+    perPage: number,
+    criteria: string
   ): Promise<PhotosDTO> {
     let photosDTO: PhotosDTO = {
       photos: [],
@@ -23,6 +24,7 @@ export class PhotoService {
         page,
         perPage,
         orientation: 'landscape',
+        orderBy: criteria as SearchOrderBy,
       })
 
       const { response } = result
